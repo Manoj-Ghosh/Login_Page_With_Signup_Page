@@ -100,9 +100,9 @@ twitter_logo = PhotoImage(file = 'twitter.png')
 twitterLabel = Label(login_window, image = twitter_logo, bg = 'white')
 twitterLabel.place(x = 690, y = 440)
 
-facebook_logo = PhotoImage(file = 'facebook.png')
-fbLabel = Label(login_window, image = facebook_logo, bg = 'white')
-fbLabel.place(x = 640, y = 440)
+google_logo = PhotoImage(file = 'google.png')
+googleLabel = Label(login_window, image = google_logo, bg = 'white')
+googleLabel.place(x = 740, y = 440)
 
 
 login_window.mainloop()
