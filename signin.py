@@ -104,5 +104,12 @@ google_logo = PhotoImage(file = 'google.png')
 googleLabel = Label(login_window, image = google_logo, bg = 'white')
 googleLabel.place(x = 740, y = 440)
 
+signupLabel = Label(login_window, text = 'Dont have an account?', font = ('Arial',11,'italic'), fg= 'red', bg = 'white' )
+signupLabel.place(x = 580, y = 500)
+
+newaccountButton = Button(login_window, text = 'Create Account', font = ('Open Sans',11,'bold underline')
+                     , fg = 'blue', bg = 'white', cursor= 'hand2', bd = 0) #,activeforeground= 'white', activebackground= 'red'
+newaccountButton.place(x = 727, y = 498)
+
 
 login_window.mainloop()
