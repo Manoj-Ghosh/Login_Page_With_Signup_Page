@@ -84,8 +84,25 @@ forgetButton = Button(login_window, text = 'Forgot Password?', bd = 0, bg = 'whi
                    , cursor = 'hand2', font = ('Arial',11,'bold'), fg = 'green')
 forgetButton.place(x = 710, y = 295)
 
+loginButton = Button(login_window, text = 'Login', font = ('Open Sans',16,'bold')
+                     , fg = 'white', bg = 'red', cursor= 'hand2', bd = 0, width = 19) #,activeforeground= 'white', activebackground= 'red'
+loginButton.place(x = 578, y = 350)
 
 
+orLabel = Label(login_window, text = '---------- OR ----------', font = ('Arial',16,'italic'), fg= 'red', bg = 'white' )
+orLabel.place(x = 613, y = 400)
+
+facebook_logo = PhotoImage(file = 'facebook.png')
+fbLabel = Label(login_window, image = facebook_logo, bg = 'white')
+fbLabel.place(x = 640, y = 440)
+
+twitter_logo = PhotoImage(file = 'twitter.png')
+twitterLabel = Label(login_window, image = twitter_logo, bg = 'white')
+twitterLabel.place(x = 690, y = 440)
+
+facebook_logo = PhotoImage(file = 'facebook.png')
+fbLabel = Label(login_window, image = facebook_logo, bg = 'white')
+fbLabel.place(x = 640, y = 440)
 
 
 login_window.mainloop()
