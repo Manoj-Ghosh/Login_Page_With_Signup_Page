@@ -4,6 +4,18 @@ from PIL import ImageTk
 
 # Functionality Part
 
+def hide():
+    Open_eye.config(file = 'closeye.png')
+    passwordEntry.config(show= '*')
+    eyeButton.config(command= show)
+
+def show():
+     Open_eye.config(file = 'openeye.png')
+     passwordEntry.config(show= '')
+     eyeButton.config(command= hide)
+
+
+
 def user_enter(event):
     if usernameEntry.get() == 'Username':
         usernameEntry.delete(0, END)
@@ -11,6 +23,9 @@ def user_enter(event):
 def password_enter(event):
     if passwordEntry.get() == 'Password':
         passwordEntry.delete(0, END)
+
+
+
 
 
 
@@ -58,6 +73,16 @@ passwordEntry.bind('<FocusIn>', password_enter)
 
 frame2 = Frame(login_window, width = 250, height= 2, bg = 'firebrick') # for creating line at the bottom of password
 frame2.place(x = 580, y = 282) 
+
+
+Open_eye = PhotoImage(file = 'openeye.png')
+eyeButton = Button(login_window, image= Open_eye, bd = 0, bg = 'white', activebackground= 'white'
+                   , cursor = 'hand2', command= hide)
+eyeButton.place(x = 800, y = 254)
+
+forgetButton = Button(login_window, text = 'Forgot Password?', bd = 0, bg = 'white', activebackground= 'white'
+                   , cursor = 'hand2', font = ('Arial',11,'bold'), fg = 'green')
+forgetButton.place(x = 710, y = 295)
 
 
 
