@@ -4,6 +4,16 @@ from PIL import ImageTk
 import pymysql
 
 
+
+def clear():
+    emailEntry.delete(0, END)
+    usernameEntry.delete(0, END)
+    passwordEntry.delete(0, END)
+    confirmpasswordEntry.delete(0, END)
+    check.set(0)
+
+
+
 def connect_database():
     if emailEntry.get() == '' or usernameEntry.get() == '' or passwordEntry.get() == '' or confirmpasswordEntry.get() == '':
         messagebox.showerror('Error', 'All Fields Are Required')
@@ -39,7 +49,18 @@ def connect_database():
         except:
             mycursor.execute('use userdata')
 
-            
+        query = 'insert into data(email, username, password) values(%s,%s,%s)'
+        mycursor.execute(query,(emailEntry.get(), usernameEntry.get(), passwordEntry.get()))
+        con.commit()
+        con.close()
+        messagebox.showinfo('Success','Registration is successful')
+        clear()
+        signup_window.destroy()
+        import signin
+
+
+
+
 
 
 
