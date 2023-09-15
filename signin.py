@@ -4,6 +4,10 @@ from PIL import ImageTk
 
 # Functionality Part
 
+def signup_page():
+    login_window.destroy()
+    import signup
+
 def hide():
     Open_eye.config(file = 'closeye.png')
     passwordEntry.config(show= '*')
@@ -108,7 +112,7 @@ signupLabel = Label(login_window, text = 'Dont have an account?', font = ('Arial
 signupLabel.place(x = 580, y = 500)
 
 newaccountButton = Button(login_window, text = 'Create Account', font = ('Open Sans',11,'bold underline')
-                     , fg = 'blue', bg = 'white', cursor= 'hand2', bd = 0) #,activeforeground= 'white', activebackground= 'red'
+                     , fg = 'blue', bg = 'white', cursor= 'hand2', bd = 0, command= signup_page) #,activeforeground= 'white', activebackground= 'red'
 newaccountButton.place(x = 727, y = 498)
 
 
