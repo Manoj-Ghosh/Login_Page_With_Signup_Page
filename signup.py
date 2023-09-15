@@ -14,7 +14,36 @@ def connect_database():
     elif check.get() == 0:
         messagebox.showerror('Error', 'Please Accept Terms & Conditions')
 
-    
+    else:
+        try:
+
+
+            con = pymysql.connect(host= 'localhost', user='root', password='1234')
+            mycursor = con.cursor()
+        except:
+            messagebox.showerror('Error', 'Database Connectivity Issue, Please Try Again')
+            return
+        
+        try:
+
+
+            query = 'create database userdata'
+            mycursor.execute(query)
+
+            query = 'use userdata'
+            mycursor.execute(query)
+
+            query = 'create table data(id int auto_increment primary key not null, email varchar(50), username varchar(80), password varchar(20))'
+            mycursor.execute(query)
+
+        except:
+            mycursor.execute('use userdata')
+
+            
+
+
+
+
 
 
 
