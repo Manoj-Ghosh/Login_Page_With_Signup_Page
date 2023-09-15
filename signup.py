@@ -2,6 +2,12 @@ from tkinter import *
 from PIL import ImageTk
 
 
+def login_page():
+    signup_window.destroy()
+    import signin
+
+
+
 
 signup_window = Tk()
 
@@ -62,7 +68,8 @@ already_account_label = Label(frame, text = 'Already have an account?', font = (
 already_account_label.grid(row=11, column=0, sticky='w', padx=15, pady= (50,0))
 
 
-loginButton = Button(frame, text = 'Log In', font = ('Arial',7, 'bold underline'),bd = 0, bg = 'white',fg = 'blue', cursor= 'hand2')
+loginButton = Button(frame, text = 'Log In', font = ('Arial',7, 'bold underline'),bd = 0, bg = 'white',fg = 'blue', cursor= 'hand2',
+                     command=login_page)
 loginButton.place(x=180, y = 441)
 
 
