@@ -1,5 +1,22 @@
 from tkinter import *
+from tkinter import messagebox
 from PIL import ImageTk
+import pymysql
+
+
+def connect_database():
+    if emailEntry.get() == '' or usernameEntry.get() == '' or passwordEntry.get() == '' or confirmpasswordEntry.get() == '':
+        messagebox.showerror('Error', 'All Fields Are Required')
+
+    elif passwordEntry.get() != confirmpasswordEntry.get():
+        messagebox.showerror('Error', 'Password Mismatch')
+
+    elif check.get() == 0:
+        messagebox.showerror('Error', 'Please Accept Terms & Conditions')
+
+    
+
+
 
 
 def login_page():
@@ -57,10 +74,13 @@ confirmpasswordEntry = Entry(frame, width= 30, font = ('Arial',13))
 confirmpasswordEntry.grid(row=8, column=0, pady= (8,0))
 
 
-terms_and_contitions = Checkbutton(frame, text = 'I agree to the Terms & Conditions', font = ('Arial',9), cursor= 'hand2')
+check = IntVar()
+terms_and_contitions = Checkbutton(frame, text = 'I agree to the Terms & Conditions', font = ('Arial',9), cursor= 'hand2',
+                                    variable= check)
 terms_and_contitions.grid(row= 9, column= 0,padx=15, pady= (13,0))
 
-signupButton = Button(frame, text = 'Signup', font = ('Arial',13, 'bold'),bd = 0, bg = 'red',fg = 'white', width=10 )
+signupButton = Button(frame, text = 'Signup', font = ('Arial',13, 'bold'),bd = 0, bg = 'red',fg = 'white'
+                      , width=10, command= connect_database)
 signupButton.grid(row=10, column=0,padx=15, pady= (13,0))
 
 
