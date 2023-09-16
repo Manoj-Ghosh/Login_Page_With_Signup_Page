@@ -17,6 +17,48 @@ def forget_pass():
     bgLabel = Label(window, image= bgImage)
     bgLabel.grid()
 
+
+    heading = Label(window, text = 'RESET PASSWORD', font = ('Arial',18)
+                , bg = 'white', fg = 'magenta2', background= 'white')
+    heading.place(x = 488, y =60)
+
+    usernamelabel = Label(window, text = 'Username', font = ('Arial',10,'bold'), bg = 'white', fg = 'magenta2')
+    usernamelabel.place(x = 470, y = 130)
+
+    usernameEntry = Entry(window, width= 30, font = ('Arial',13))
+    usernameEntry.place(x = 470, y = 160)
+
+    #Frame(window, width= 250, height= 2).place(x= 470, y=180)
+
+
+    Passwordlabel = Label(window, text = 'New Password', font = ('Arial',10,'bold'), bg = 'white', fg = 'magenta2')
+    Passwordlabel.place(x = 470, y = 190)
+
+    Passwordlabel = Entry(window, width= 30, font = ('Arial',13))
+    Passwordlabel.place(x = 470, y = 220)
+
+    #Frame(window, width= 250, height= 2).place(x= 470, y=180)
+
+
+    ConPasswordlabel = Label(window, text = 'Confirm New Password', font = ('Arial',10,'bold'), bg = 'white', fg = 'magenta2')
+    ConPasswordlabel.place(x = 470, y = 250)
+
+    ConPasswordlabel = Entry(window, width= 30, font = ('Arial',13))
+    ConPasswordlabel.place(x = 470, y = 280)
+
+    #Frame(window, width= 250, height= 2).place(x= 470, y=180)
+
+
+
+    submitButton = Button(window, text = 'SUBMIT', font = ('Open Sans',16,'bold')
+                     , fg = 'white', bg = 'magenta2', cursor= 'hand2', bd = 0, width = 19) #,activeforeground= 'white', activebackground= 'red'
+    submitButton.place(x = 478, y = 340)
+
+
+
+
+
+
     window.mainloop()
 
 
