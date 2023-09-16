@@ -1,8 +1,43 @@
 from tkinter import *
+from tkinter import messagebox
 from PIL import ImageTk
+import pymysql
+
+
 
 
 # Functionality Part
+
+def login_user():
+    if usernameEntry.get() == '' or passwordEntry.get() == '':
+        messagebox.showerror('Error', 'All Fields Are Required')
+    else:
+        try:
+
+            con = pymysql.connect(host='localhost', user='root', password='1234')
+            mycursor = con.cursor()
+
+        except:
+            messagebox.showerror('Error', 'Connection is not established, try again')
+            return
+        
+        query = 'use userdata'
+        mycursor.execute(query)
+
+        query = 'select * from data where username=%s and password=%s'
+        mycursor.execute(query, (usernameEntry.get(), passwordEntry.get()))
+        row = mycursor.fetchone()
+        if row == None:
+            messagebox.showerror('Error', 'Invalid Username or Password')
+        else:
+            messagebox.showinfo('Welcome', 'Login is Successfull')
+
+
+
+
+
+    
+
 
 def signup_page():
     login_window.destroy()
@@ -89,7 +124,7 @@ forgetButton = Button(login_window, text = 'Forgot Password?', bd = 0, bg = 'whi
 forgetButton.place(x = 710, y = 295)
 
 loginButton = Button(login_window, text = 'Login', font = ('Open Sans',16,'bold')
-                     , fg = 'white', bg = 'red', cursor= 'hand2', bd = 0, width = 19) #,activeforeground= 'white', activebackground= 'red'
+                     , fg = 'white', bg = 'red', cursor= 'hand2', bd = 0, width = 19, command = login_user) #,activeforeground= 'white', activebackground= 'red'
 loginButton.place(x = 578, y = 350)
 
 
