@@ -10,6 +10,39 @@ import pymysql
 
 
 def forget_pass():
+
+    def change_password():
+        if usernameEntryy.get() =='' or PasswordEntryy.get() =='' or ConPasswordEntryy.get() =='':
+            messagebox.showerror('Error', 'All Fields Are Required', parent = window)
+
+        elif PasswordEntryy.get() != ConPasswordEntryy.get():
+            messagebox.showerror('Error', 'Password and Confirm Password are Not Matching', parent = window)
+
+        else:
+            con = pymysql.connect(host= 'localhost', user='root', password='1234', database= 'userdata')
+            mycursor = con.cursor()
+
+            query = 'select * from data where username = %s'
+            mycursor.execute(query, (usernameEntryy.get()))
+            roww = mycursor.fetchone()
+
+            if roww == None:
+                messagebox.showerror('Error', 'Incorrect Username', parent = window)
+
+            else:
+
+                query = 'update data set password =%s where username =%s'
+                mycursor.execute(query, (PasswordEntryy.get(), usernameEntryy.get()))
+                con.commit()
+                con.close()
+                messagebox.showinfo('Success', 'Password is reset. Please Login With The New Password', parent = window)
+                window.destroy()
+    
+
+        
+
+
+
     window = Toplevel()
     window.title('Change Password')
 
@@ -25,8 +58,8 @@ def forget_pass():
     usernamelabel = Label(window, text = 'Username', font = ('Arial',10,'bold'), bg = 'white', fg = 'magenta2')
     usernamelabel.place(x = 470, y = 130)
 
-    usernameEntry = Entry(window, width= 30, font = ('Arial',13))
-    usernameEntry.place(x = 470, y = 160)
+    usernameEntryy = Entry(window, width= 30, font = ('Arial',13))
+    usernameEntryy.place(x = 470, y = 160)
 
     #Frame(window, width= 250, height= 2).place(x= 470, y=180)
 
@@ -34,8 +67,8 @@ def forget_pass():
     Passwordlabel = Label(window, text = 'New Password', font = ('Arial',10,'bold'), bg = 'white', fg = 'magenta2')
     Passwordlabel.place(x = 470, y = 190)
 
-    Passwordlabel = Entry(window, width= 30, font = ('Arial',13))
-    Passwordlabel.place(x = 470, y = 220)
+    PasswordEntryy = Entry(window, width= 30, font = ('Arial',13))
+    PasswordEntryy.place(x = 470, y = 220)
 
     #Frame(window, width= 250, height= 2).place(x= 470, y=180)
 
@@ -43,15 +76,15 @@ def forget_pass():
     ConPasswordlabel = Label(window, text = 'Confirm New Password', font = ('Arial',10,'bold'), bg = 'white', fg = 'magenta2')
     ConPasswordlabel.place(x = 470, y = 250)
 
-    ConPasswordlabel = Entry(window, width= 30, font = ('Arial',13))
-    ConPasswordlabel.place(x = 470, y = 280)
+    ConPasswordEntryy = Entry(window, width= 30, font = ('Arial',13))
+    ConPasswordEntryy.place(x = 470, y = 280)
 
     #Frame(window, width= 250, height= 2).place(x= 470, y=180)
 
 
 
     submitButton = Button(window, text = 'SUBMIT', font = ('Open Sans',16,'bold')
-                     , fg = 'white', bg = 'magenta2', cursor= 'hand2', bd = 0, width = 19) #,activeforeground= 'white', activebackground= 'red'
+                     , fg = 'white', bg = 'magenta2', cursor= 'hand2', bd = 0, width = 19, command=change_password) #,activeforeground= 'white', activebackground= 'red'
     submitButton.place(x = 478, y = 340)
 
 
