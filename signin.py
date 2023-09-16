@@ -8,6 +8,25 @@ import pymysql
 
 # Functionality Part
 
+
+def forget_pass():
+    window = Toplevel()
+    window.title('Change Password')
+
+    bgImage = ImageTk.PhotoImage(file = 'background.jpg')
+    bgLabel = Label(window, image= bgImage)
+    bgLabel.grid()
+
+    window.mainloop()
+
+
+
+
+
+
+
+
+
 def login_user():
     if usernameEntry.get() == '' or passwordEntry.get() == '':
         messagebox.showerror('Error', 'All Fields Are Required')
@@ -31,6 +50,8 @@ def login_user():
             messagebox.showerror('Error', 'Invalid Username or Password')
         else:
             messagebox.showinfo('Welcome', 'Login is Successfull')
+
+
 
 
 
@@ -120,7 +141,7 @@ eyeButton = Button(login_window, image= Open_eye, bd = 0, bg = 'white', activeba
 eyeButton.place(x = 800, y = 254)
 
 forgetButton = Button(login_window, text = 'Forgot Password?', bd = 0, bg = 'white', activebackground= 'white'
-                   , cursor = 'hand2', font = ('Arial',11,'bold'), fg = 'green')
+                   , cursor = 'hand2', font = ('Arial',11,'bold'), fg = 'green', command=forget_pass)
 forgetButton.place(x = 710, y = 295)
 
 loginButton = Button(login_window, text = 'Login', font = ('Open Sans',16,'bold')
