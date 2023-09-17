@@ -9,6 +9,29 @@ import pymysql
 # Functionality Part
 
 
+def page():
+    welcome_window = Toplevel()
+    welcome_window.title('Welcome')
+
+    welcome_Image1 = ImageTk.PhotoImage(file ='welcome.jpg')
+    welcome_Label1 = Label(welcome_window, image= welcome_Image1)
+    welcome_Label1.grid()
+
+
+    Welcome_heading1 = Label(welcome_window, text = 'Welcome', font = ('Arial',10)
+                    , bg = 'white', fg = 'magenta2', background= 'white')
+    Welcome_heading1.place(x = 200, y =260)
+
+
+
+
+def clear():
+    usernameEntry.delete(0, END)
+    passwordEntry.delete(0, END)
+    
+    
+
+
 def forget_pass():
 
     def change_password():
@@ -125,6 +148,8 @@ def login_user():
             messagebox.showerror('Error', 'Invalid Username or Password')
         else:
             messagebox.showinfo('Welcome', 'Login is Successfull')
+            import page
+            clear()
 
 
 
